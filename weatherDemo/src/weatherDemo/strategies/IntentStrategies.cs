@@ -1,4 +1,5 @@
 using Alexa.NET.Request.Type;
+using Newtonsoft.Json;
 using weatherDemo;
 
 interface IIntentStrategy
@@ -29,7 +30,14 @@ class GetTodayWeatherIntentStrat : IIntentStrategy
   /// <returns></returns>
   public async Task<string> Run(IntentRequest intentRequest)
   {
-    var weather = await weatherService.GetWeatherByZipAsync("11111");
+    var zip = intentRequest.Intent.Slots["Zip"].Value;
+
+    if (zip == null)
+    {
+      return "I'm sorry, but I didn't understand.  Please provide a USA zip code.";
+    }
+
+    var weather = await weatherService.GetWeatherByZipAsync(zip);
 
     return $"For the zip code {weather.Zip}, today's high temperature is {weather.HighTemp} degrees and today's low temperature is {weather.LowTemp} degrees fahrenheit.";
   }

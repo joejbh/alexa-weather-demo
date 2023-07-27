@@ -1,6 +1,5 @@
 using System.Net.Http.Headers;
 using Amazon.Lambda.Core;
-using System.Net.Http.Json;
 
 namespace weatherDemo;
 
@@ -33,19 +32,33 @@ public class WeatherService : IWeatherService
   public async Task<Weather> GetWeatherByZipAsync(string zip)
   {
     log.LogLine("Fetching weather data from external service");
+    var result = zip == "11111" ?
+      new Weather
+      {
+        Zip = zip,
+        HighTemp = 98.3,
+        LowTemp = 70.2,
+      } :
+      new Weather
+      {
+        Zip = zip,
+        HighTemp = 83.7,
+        LowTemp = 63.2,
+      };
 
-    var key = Environment.GetEnvironmentVariable("WEATHER_BIT_KEY");
+    return await Task.FromResult(result);
 
-    var w = await client.GetFromJsonAsync<WeatherResponse>($"/forecast/daily?postal_code={zip}&units=I&key={key}");
+    // var key = Environment.GetEnvironmentVariable("WEATHER_BIT_KEY");
+    // var w = await client.GetFromJsonAsync<WeatherResponse>($"/forecast/daily?postal_code={zip}&units=I&key={key}");
 
-    var todayWeather = (w?.data?.FirstOrDefault()) ?? throw new Exception("There was an error fetching the weather data");
+    // var todayWeather = (w?.data?.FirstOrDefault()) ?? throw new Exception("There was an error fetching the weather data");
 
-    return new Weather
-    {
-      Zip = zip,
-      HighTemp = Convert.ToDouble(todayWeather.high_temp),
-      LowTemp = Convert.ToDouble(todayWeather.low_temp),
-    };
+    // return new Weather
+    // {
+    //   Zip = zip,
+    //   HighTemp = Convert.ToDouble(todayWeather.high_temp),
+    //   LowTemp = Convert.ToDouble(todayWeather.low_temp),
+    // };
   }
 }
 
