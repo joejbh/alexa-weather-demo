@@ -1,0 +1,8 @@
+/home/joehaas/code/AWS/weatherDemo/src/weatherDemo/bin/Debug/net6.0/linux-x64/publish/weatherDemo.deps.json
+/home/joehaas/code/AWS/weatherDemo/src/weatherDemo/bin/Debug/net6.0/linux-x64/publish/weatherDemo.runtimeconfig.json
+/home/joehaas/code/AWS/weatherDemo/src/weatherDemo/bin/Debug/net6.0/linux-x64/publish/weatherDemo.pdb
+/home/joehaas/code/AWS/weatherDemo/src/weatherDemo/bin/Debug/net6.0/linux-x64/publish/Alexa.NET.dll
+/home/joehaas/code/AWS/weatherDemo/src/weatherDemo/bin/Debug/net6.0/linux-x64/publish/Amazon.Lambda.Core.dll
+/home/joehaas/code/AWS/weatherDemo/src/weatherDemo/bin/Debug/net6.0/linux-x64/publish/Amazon.Lambda.Serialization.Json.dll
+/home/joehaas/code/AWS/weatherDemo/src/weatherDemo/bin/Debug/net6.0/linux-x64/publish/Newtonsoft.Json.dll
+/home/joehaas/code/AWS/weatherDemo/src/weatherDemo/bin/Debug/net6.0/linux-x64/publish/weatherDemo.dll
